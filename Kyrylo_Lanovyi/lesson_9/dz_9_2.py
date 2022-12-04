@@ -2,22 +2,21 @@ import string
 
 
 class TextProcessor:
-    def __init__(self, _punkt):
-        self._punkt = _punkt
-
+    def __init__(self):
+        self._punkt = string.punctuation
     def get_clean_string(self, get_string):
-        if self._punkt == True:
+        if self.__is_punktiatian(get_string) == True:
             cleaned_string = get_string.translate(str.maketrans('', '', string.punctuation))
         else:
-            cleaned_string = self._punkt
+            cleaned_string = get_string
         return cleaned_string
 
-    def __is_punktiatian(self):
-        if any(n in string.punctuation for n in get_string):
-            self._punkt = True
+    def __is_punktiatian(self, l):
+        if any(n in self._punkt for n in l):
+            p = True
         else:
-            self._punkt = False
-        return self._punkt
+            p = False
+        return p
 
 
 class TextLoader:
